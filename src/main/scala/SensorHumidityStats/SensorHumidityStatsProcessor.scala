@@ -15,7 +15,7 @@ import scala.util.Try
 
 object SensorHumidityStatsProcessor {
 
-  def collectCSVFile(directoryName: Option[String]): Option[Iterator[File]] = {
+  def collectCSVFiles(directoryName: Option[String]): Option[Iterator[File]] = {
     directoryName match {
       case Some(dirName) =>
         val directory = new File(dirName)
@@ -24,13 +24,13 @@ object SensorHumidityStatsProcessor {
           println(
             s"Could not find directory '$dirName'. Please provide a valid directory path."
           )
-          None
+          Option.empty
         }
       case _ =>
         println(
-          "Could not find a valid directory path! The application expects a valid path as its first argument."
+          "Could not find a valid directory path! The application expects a valid path but got nothing"
         )
-        None
+        Option.empty
     }
   }
 

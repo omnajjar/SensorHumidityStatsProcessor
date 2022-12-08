@@ -1,12 +1,12 @@
 import SensorHumidityStats.SensorHumidityStatsProcessor.{
-  collectCSVFile,
+  collectCSVFiles,
   printReport,
   processStatsFiles
 }
 
 object Main {
   def main(args: Array[String]): Unit = {
-    val csvFilesToProcess = collectCSVFile(args.headOption)
+    val csvFilesToProcess = collectCSVFiles(args.headOption)
     csvFilesToProcess collect { case files =>
       val (sensorsCalculatedStats, filesProcessedCount) = processStatsFiles(
         files
